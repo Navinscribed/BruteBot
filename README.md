@@ -1,4 +1,6 @@
-<h1 align="center">BruteBot</h1>
+<p align="center">
+<img src = "https://user-images.githubusercontent.com/51265978/89702444-f8a5f380-d95e-11ea-8210-79411e9fdd20.png"></img>
+</p>
 
 <p align="center">
   <a href="https://www.python.org/downloads/">
@@ -13,22 +15,21 @@
 </p>
 
 <h3 align="center">Password brute-forcing tool built upon Python 3.7 and <a href = "https://webbot.readthedocs.io/">webbot</a></h3>
-</br>
 
-## Overview:
+---
 
-+ BruteBot lets you brute-force login passwords. It is handy for login pages that have CSRF protection or any random tokens.
++ **BruteBot** lets you brute-force login passwords. It is handy for login pages that have CSRF protection or any random tokens.
 
        Basically, the script
        1. GETs the login page,
-       2. consumes the username / email and passwords fed by you and,
-       3. POSTs them along with additional random parameters if any (which could be the Anti-CSRF token or
-          a browser window identifier such as Tab ID, Window ID, etc.) as they are, to the server;
+       2. consumes the username / email and passwords fed by you, and
+       3. POSTs those values to the server along with additional random parameters if any
+          (could be an Anti-CSRF token or a browser window identifier or a time-stamp, etc.);
        4. loops the entire process until you get a hit, that is, the correct password.
 
-+ I specifically used webbot (a library derived from Selenium) because I wanted to imitate the actions of a user using a browser to visit the target website login page and attempting to brute-force the password, in the cleanest possible way.
++ I specifically used webbot (a library derived from Selenium) because I wanted to mimic the actions of a user browsing the target website login page and attempting to brute-force the password themselves, in the cleanest possible way.
 
-+ That way, any additional random tokens that might get generated upon visiting the login page and are expected in the subsequent login POST request, will be taken care of.
++ That way, any additional random tokens that might get generated upon visiting the login page shall be automatically passed along in the subsequent login POST request, and the password brute-forcing automation can be accomplished.
 
 + Plus, it lets you see the browser in action. So, it becomes easier to visualize and helps while troubleshooting.
 
