@@ -44,7 +44,7 @@
 pip3 install webbot
 ```
 
-3. Download Brutebot.py to your local directory.
+3. Download Brutebot.py to your local directory or fork and clone the repository to create a local copy on your computer.
 4. Place your password list file in the same directory as BruteBot.py.
 
 </br>
