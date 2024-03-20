@@ -23,7 +23,7 @@
 
 - Furthermore, it gives you a chance to visualize the browser's operations in real time, which can be useful for troubleshooting.
 <br><br>
-## How BruteBot operates?
+## How BruteBot Operates?
 - It retrieves the login page via a GET request.
 
 - It utilizes the username / email address and the password list provided by you.
@@ -53,8 +53,8 @@ _That's it! You are good to go!_
 python BruteBot.py -t (LOGIN PAGE URL) -u USERNAME -p (PASSWORD LIST) --uid (USERNAME ELEMENT ID) --pid (PASSWORD ELEMENT ID) --bname (LOGIN BUTTON NAME) -m (visible / headless) -s (TIME IN SECONDS)
 ```
 
-### Program Arguments:
-#### Required Arguments:
+### Program Arguments
+#### Required Arguments
 - `-t` / `--target` : URL of the target website's login page
 
 - `-u` / `--username` : A valid username / email address
@@ -78,7 +78,7 @@ python BruteBot.py -t (LOGIN PAGE URL) -u USERNAME -p (PASSWORD LIST) --uid (USE
 
 - `-h` / `--help` : Shows the help message and exits
 <br><br>
-## Quickstart guide:
+## Quickstart Guide
 
 **Demo 1** - To run BruteBot with the default options:
 
