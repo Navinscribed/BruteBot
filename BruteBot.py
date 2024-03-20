@@ -12,7 +12,7 @@ def print_cyan(colored_text): print("\033[96m{}\033[00m".format(colored_text))
 def print_yellow(colored_text): print("\033[93m{}\033[00m".format(colored_text))
 
 
-print_green('''\n[!] Script Author: Navin M. (GitHub handle: navin-maverick).\n
+print_green('''\n[!] Script Author: Navin M. (GitHub handle: Navinscribed).\n
 [!] Description: BruteBot has been built upon Python 3.7 & uses 'webbot' (a library derived from Selenium).
 Lets you brute-force login passwords. Handy for login pages that have CSRF protection or any random tokens.\n
 [!] Disclaimer: Do not run this script on websites that you do not have explicit permissions to assess.
