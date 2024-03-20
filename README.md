@@ -9,96 +9,124 @@
   <a href="https://webbot.readthedocs.io/">
     <img src="https://img.shields.io/badge/library-webbot-orange">
   </a>
-  <a href="https://github.com/navin-maverick">
-    <img src="https://img.shields.io/badge/author-navin%20m-brightgreen">
+  <a href="https://github.com/Navinscribed">
+    <img src="https://img.shields.io/badge/author-Navinscribed-brightgreen">
  </a>
 </p>
 
-<h3 align="center">Password brute-forcing tool built upon Python 3.7 and <a href = "https://webbot.readthedocs.io/">webbot</a></h3>
+## BruteBot
+- **BruteBot** is a Python-based tool that leverages the [webbot](https://webbot.readthedocs.io/) library to automate the process of brute-forcing login passwords, `particularly useful for login pages fortified with CSRF protection or random tokens`.
 
----
+- The choice of webbot, a library derived from Selenium, was intentional. The goal was to emulate a user navigating the target website’s login page and attempting to brute-force the password in the most unobtrusive manner.
 
-+ **BruteBot** lets you brute-force login passwords. It is handy for login pages that have CSRF protection or any random tokens.
+- This approach ensures that any random tokens that are generated when the login page gets loaded are automatically included in the subsequent login POST requests, thereby making the automation of password brute-forcing possible.
 
-       Basically, the script
-       1. GETs the login page,
-       2. consumes the username / email and passwords fed by you, and
-       3. POSTs those values to the server along with additional random parameters if any
-          (could be an Anti-CSRF token or a browser window identifier or a time-stamp, etc.);
-       4. loops the entire process until you get a hit, that is, the correct password.
+- Furthermore, it gives you a chance to visualize the browser's operations in real time, which can be useful for troubleshooting.
+<br><br>
+## How BruteBot operates?
+- It retrieves the login page via a GET request.
 
-+ I specifically used webbot (a library derived from Selenium) because I wanted to mimic the actions of a user browsing the target website login page and attempting to brute-force the password themselves, in the cleanest possible way.
+- It utilizes the username / email address and the password list provided by you.
 
-+ That way, any additional random tokens that might get generated upon visiting the login page shall be automatically passed along in the subsequent login POST request, and the password brute-forcing automation can be accomplished.
+- It submits these credentials to the server via multiple POST requests (each containing a unique username-password combination), alongside any additional random tokens if present  (such as: an anti-CSRF token, an arbitrary browser identifier, timestamp, etc.)
 
-+ Plus, it lets you see the browser in action. So, it becomes easier to visualize and helps while troubleshooting.
+- It repeats this process until it successfully discovers the correct password.
+<br><br>
+## Requirements
 
-</br>
-
-## Requirements:
-
-1. Download and install the latest version of Python 3.x from [here](https://www.python.org/downloads/).
-2. Use the package manager [pip](https://pip.pypa.io/en/stable/) to install 'webbot'.
+1. Install `webbot` using the following command:
 
 ```bash
-pip3 install webbot
+pip install webbot
 ```
 
-3. Download Brutebot.py to your local directory.
-4. Place your password list file in the same directory as BruteBot.py.
+2. Download or clone the repository.
 
-</br>
+3. Place your password list file in the same directory as BruteBot.py.
+<br><br>
+_That's it! You are good to go!_
+<br><br>
+## Usage
 
-That's it! You are good to go!
-
-</br>
-
-## Usage:
-
+### Command
 ```
-python3 BruteBot.py -t (LOGIN PAGE URL) -u USERNAME -p (PASSWORD LIST) --uid (USERNAME ELEMENT ID) --pid (PASSWORD ELEMENT ID) --bname (LOGIN BUTTON NAME) -m (visible / headless) -s (TIME IN SECONDS)
+python BruteBot.py -t (LOGIN PAGE URL) -u USERNAME -p (PASSWORD LIST) --uid (USERNAME ELEMENT ID) --pid (PASSWORD ELEMENT ID) --bname (LOGIN BUTTON NAME) -m (visible / headless) -s (TIME IN SECONDS)
 ```
 
-</br>
+### Program Arguments:
+#### Required Arguments:
+- `-t` / `--target` : URL of the target website's login page
 
-Here, this might "help":
+- `-u` / `--username` : A valid username / email address
 
-<img width="1440" alt="BruteBot-Help" src="https://user-images.githubusercontent.com/51265978/89457710-6d243b00-d783-11ea-8b86-17cb29f5259a.png">
+- `-p` / `--plist` : Path of the password list file
 
-</br>
+- `--uid` : Username Element ID
 
+- `--pid` : Password Element ID
+
+- `--bname` : Name of the login button element
+
+#### Optional Arguments
+- `-m` / `--mode` : Sets the mode of operation
+
+  - `headless` : To have all operations run in the background (Default mode: `headless`)
+
+  - `visible` : To view the operations happening in your browser
+
+- `-s` / `--time` : Duration, in seconds, for which the browser will wait before commencing the brute-forcing
+
+- `-h` / `--help` : Shows the help message and exits
+<br><br>
 ## Quickstart guide:
 
-**Demo 1** - To run BruteBot with default options:
+**Demo 1** - To run BruteBot with the default options:
 
 ```python
-python3 BruteBot.py -t https://demo.testfire.net/login.jsp -u admin -p passwords.txt --uid uid --pid passw --bname Login
+python BruteBot.py -t https://demo.testfire.net/login.jsp -u admin -p passwords.txt --uid uid --pid passw --bname Login
 ```
 
-<img src="https://github.com/navin-maverick/media-repo/blob/master/BruteBot/BruteBot-Demo-1.gif"></img>
+<img src="https://github.com/Navinscribed/media-repo/blob/master/BruteBot/BruteBot-Demo-1.gif"></img>
 
-</br></br>
+<br><br>
 
-**Demo 2** - To see the browser(s) in action when BruteBot runs:
+**Demo 2** - To see the browser tab(s) in action when BruteBot runs:
 
 ```python
-python3 BruteBot.py -t https://demo.testfire.net/login.jsp -u admin -p passwords.txt --uid uid --pid passw --bname Login -m visible
+python BruteBot.py -t https://demo.testfire.net/login.jsp -u admin -p passwords.txt --uid uid --pid passw --bname Login -m visible
 ```
 
-<img src="https://github.com/navin-maverick/media-repo/blob/master/BruteBot/BruteBot-Demo-2.gif"></img>
+<img src="https://github.com/Navinscribed/media-repo/blob/master/BruteBot/BruteBot-Demo-2.gif"></img>
 
-</br></br>
+<br><br>
 
-**Demo 3** - To route the traffic through a proxy while running BruteBot:
+**Demo 3** - To route the traffic through a network proxy while running BruteBot:
 
 ```python
-python3 BruteBot.py -t https://demo.testfire.net/login.jsp -u admin -p passwords.txt --uid uid --pid passw --bname Login --proxy http://localhost:8080
+python BruteBot.py -t https://demo.testfire.net/login.jsp -u admin -p passwords.txt --uid uid --pid passw --bname Login --proxy http://localhost:8080
 ```
 
-<img src="https://github.com/navin-maverick/media-repo/blob/master/BruteBot/BruteBot-Demo-3.gif"></img>
+<img src="https://github.com/Navinscribed/media-repo/blob/master/BruteBot/BruteBot-Demo-3.gif"></img>
 
-</br>
+<br>
 
+## Disclaimer
+- Please refrain from using this tool on websites without explicit permission, as doing so may be considered illegal or unethical.
+- I bear no responsibility for any misuse of this tool.
+<br><br>
+## Acknowledgments
+- This project utilizes the [webbot](https://webbot.readthedocs.io/) library, originally developed by the author [@nateshmbhat](https://github.com/nateshmbhat/).
+- Special thanks to [@m-uma](https://github.com/m-uma/) for their invaluable offline contributions that were instrumental in the development of this tool.
+<br><br>
+## License & Contributions
+- This project is licensed under the terms of the MIT license. Feel free to contribute, go ahead and submit a [Pull Request](https://github.com/Navinscribed/BruteBot/pulls).
+- However, if you are considering making significant modifications, I would insist that you discuss with me first by opening an [Issue](https://github.com/Navinscribed/BruteBot/issues/new).
+<br><br>
 ---
+<span style="vertical-align: middle;">Like my work?</span>
+<a href="https://www.buymeacoffee.com/navin.m" style="vertical-align: middle;">
+  Buy me a coffee maybe?
+  <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" style="width: 30px; height: 30px; vertical-align: middle;">
+</a>
 
-**Like my work?** <a href="https://www.buymeacoffee.com/navin.m">Buy me a coffee maybe?</br></br><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"></img></a>
+
